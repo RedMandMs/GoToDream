@@ -1,4 +1,4 @@
-package soft.happyhamster.com.gotodream;
+package com.happyhamster.soft.gotodream;
 
 import org.junit.Test;
 

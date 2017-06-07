@@ -1,4 +1,4 @@
-package soft.happyhamster.com.gotodream;
+package com.happyhamster.soft.gotodream;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

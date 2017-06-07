@@ -1,4 +1,4 @@
-package soft.happyhamster.com.gotodream;
+package com.happyhamster.soft.gotodream;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
