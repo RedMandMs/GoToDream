@@ -1,4 +1,4 @@
-package com.happyhamster.soft.gotodream.domain;
+package com.happyhamster.soft.gotodream.domain.entity;
 
 import java.util.Date;
 
