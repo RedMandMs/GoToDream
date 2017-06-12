@@ -22,7 +22,10 @@
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:columnCount="2"
         android:id="@+id/allDreams">
+        
     </GridLayout>
 
 </android.support.constraint.ConstraintLayout>
