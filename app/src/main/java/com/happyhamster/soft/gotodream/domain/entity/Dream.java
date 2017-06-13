@@ -2,6 +2,7 @@ package com.happyhamster.soft.gotodream.domain.entity;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 /**
  * Created by Vilgodskiy_Sergey on 29.05.2017.
@@ -9,7 +10,8 @@ import io.realm.annotations.PrimaryKey;
 public class Dream extends RealmObject {
 
     @PrimaryKey
-    private Long id;
+    @Required
+    private String id;
 
     private String name;
 
@@ -19,11 +21,11 @@ public class Dream extends RealmObject {
 
     private Plan plan;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
