@@ -9,7 +9,7 @@ import io.reactivex.Observable;
 /**
  * Created by Vilgodskiy_Sergey on 07.06.2017.
  */
-public class DreamInteractorImpl extends Interactor<Dream> implements DreamInteractor {
+public class    DreamInteractorImpl extends Interactor<Dream> implements DreamInteractor {
 
     @Inject
     PlanInteractor planInteractor;
@@ -20,32 +20,26 @@ public class DreamInteractorImpl extends Interactor<Dream> implements DreamInter
 
     @Override
     public Observable<Dream> get(Long id) {
-        return doInTransaction(realm -> Observable.just(realm.where(Dream.class).equalTo("id", id).findFirst()));
+        return null;
     }
 
     @Override
     public Observable<Dream> getAll() {
-        return doInTransaction(realm -> Observable.fromIterable((realm.where(Dream.class).findAll())));
+        return null;
     }
 
     @Override
     public Observable<Dream> persist(Dream dream) {
-        return doInTransaction(realm -> Observable.just(realm.copyToRealm(dream)));
+        return null;
     }
 
     @Override
     public Observable<Dream> update(Dream dream) {
-        return doInTransaction(realm -> {
-            realm.insertOrUpdate(dream);
-            return Observable.just(dream);
-        });
+        return null;
     }
 
     @Override
     public void remove(Long id) {
-        doInTransaction(realm -> {
-            realm.where(Dream.class).equalTo("id", id).findAll().deleteAllFromRealm();
-            return Observable.empty();
-        });
+
     }
 }

@@ -1,23 +1,31 @@
 package com.happyhamster.soft.gotodream.domain.entity;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
 
 /**
  * Created by Vilgodskiy_Sergey on 29.05.2017.
  */
-public class Dream extends RealmObject {
+@Entity(tableName = "dream",
+        foreignKeys = @ForeignKey(entity = Plan.class, parentColumns = "id", childColumns = "plan_id", onDelete = ForeignKey.CASCADE))
+public class Dream {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private Long id;
 
+    @ColumnInfo(name = "name")
     private String name;
 
+    @ColumnInfo(name = "description")
     private String description;
 
+    @ColumnInfo(name = "complete")
     private boolean complete;
 
-    private Plan plan;
+    @ColumnInfo(name = "plan_id")
+    private Long planId;
 
     public Long getId() {
         return id;
@@ -51,11 +59,11 @@ public class Dream extends RealmObject {
         this.complete = complete;
     }
 
-    public Plan getPlan() {
-        return plan;
+    public Long getPlanId() {
+        return planId;
     }
 
-    public void setPlan(Plan plan) {
-        this.plan = plan;
+    public void setPlanId(Long planId) {
+        this.planId = planId;
     }
 }

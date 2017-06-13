@@ -1,28 +1,37 @@
 package com.happyhamster.soft.gotodream.domain.entity;
 
-import java.util.Date;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Vilgodskiy_Sergey on 07.06.2017.
  */
-public class Stage extends RealmObject {
+@Entity(tableName = "stage",
+        foreignKeys = @ForeignKey(entity = Plan.class, parentColumns = "id", childColumns = "plan_id", onDelete = ForeignKey.CASCADE))
+public class Stage {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private Long id;
 
+    @ColumnInfo(name = "start")
     private Date start;
 
+    @ColumnInfo(name = "finish")
     private Date finish;
 
+    @ColumnInfo(name = "name")
     private String name;
 
+    @ColumnInfo(name = "complete")
     private boolean complete;
 
-    private RealmList<Task> tasks;
+    @ColumnInfo(name = "plan_id")
+    private Long planId;
 
     public Long getId() {
         return id;
@@ -64,11 +73,11 @@ public class Stage extends RealmObject {
         this.complete = complete;
     }
 
-    public RealmList<Task> getTasks() {
-        return tasks;
+    public Long getPlanId() {
+        return planId;
     }
 
-    public void setTasks(RealmList<Task> tasks) {
-        this.tasks = tasks;
+    public void setPlanId(Long planId) {
+        this.planId = planId;
     }
 }
