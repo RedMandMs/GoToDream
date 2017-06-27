@@ -11,21 +11,9 @@ import io.realm.annotations.Required;
 
 public class Plan extends RealmObject {
 
-    @PrimaryKey
-    @Required
-    private String id;
-
     private boolean complete;
 
     private RealmList<Stage> stages;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public boolean isComplete() {
         return complete;

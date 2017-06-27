@@ -1,5 +1,6 @@
 package com.happyhamster.soft.gotodream.domain.interactor;
 
+import java.util.UUID;
 import java.util.function.Function;
 
 import io.reactivex.Observable;
@@ -11,10 +12,16 @@ import io.realm.Realm;
 
 abstract class Interactor<T> {
 
-    Observable<T> doInTransaction(Function<Realm, Observable<T>> function) {
+    protected Observable<T> doInTransaction(Function<Realm, Observable<T>> function) {
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
-        return function.apply(realm);
+        Observable<T> result = function.apply(realm);
+        realm.commitTransaction();
+        return result;
+    }
+
+    protected String getRandomId(){
+        return UUID.randomUUID().toString();
     }
 
 }

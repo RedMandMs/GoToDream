@@ -41,7 +41,7 @@ public class DreamAdapter  extends BaseAdapter{
 
     @Override
     public long getItemId(int position) {
-        return dreams.get(position).getId();
+        return 0;
     }
 
     @Override
@@ -58,8 +58,8 @@ public class DreamAdapter  extends BaseAdapter{
         }
 
         listViewHolder.textInListView.setText(dreams.get(position).getName());
-        int imageResourceId = this.context.getResources().getIdentifier(dreams.get(position).getImageResource(), "drawable", this.context.getPackageName());
-        listViewHolder.imageInListView.setImageResource(imageResourceId);
+        //int imageResourceId = this.context.getResources().getIdentifier(dreams.get(position).getImageResource(), "drawable", this.context.getPackageName());
+        //listViewHolder.imageInListView.setImageResource(imageResourceId);
 
         return convertView;
     }

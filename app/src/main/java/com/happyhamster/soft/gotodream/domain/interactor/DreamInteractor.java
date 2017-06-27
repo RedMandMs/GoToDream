@@ -1,5 +1,8 @@
 package com.happyhamster.soft.gotodream.domain.interactor;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+
 import com.happyhamster.soft.gotodream.domain.entity.Dream;
 
 import io.reactivex.Observable;
@@ -18,4 +21,8 @@ public interface DreamInteractor {
     Observable<Dream> update(Dream dream);
 
     void remove(Long id);
+
+    void updateImage(String id, Bitmap image);
+
+    Bitmap getImage(String id);
 }

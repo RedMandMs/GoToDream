@@ -9,9 +9,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.happyhamster.soft.gotodream.GoToDream;
 import com.happyhamster.soft.gotodream.R;
+import com.happyhamster.soft.gotodream.domain.entity.Dream;
+import com.happyhamster.soft.gotodream.domain.entity.Plan;
+import com.happyhamster.soft.gotodream.domain.interactor.DreamInteractor;
+
+import javax.inject.Inject;
+
+import io.reactivex.Observable;
 
 public class StartActivity extends AppCompatActivity {
+
+    @Inject
+    DreamInteractor dreamInteractor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +34,7 @@ public class StartActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
+        GoToDream.getInteractorComponent().inject(this);
     }
 
     @Override
@@ -30,6 +42,19 @@ public class StartActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_start, menu);
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Dream dream = new Dream();
+        dream.setName("Тест");
+        Plan plan = new Plan();
+        plan.setComplete(true);
+        dream.setPlan(plan);
+        dreamInteractor.persist(dream);
+        Observable<Dream> all = dreamInteractor.getAll();
+        System.out.println("The End");
     }
 
     @Override

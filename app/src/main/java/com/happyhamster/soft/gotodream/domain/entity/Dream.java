@@ -1,6 +1,9 @@
 package com.happyhamster.soft.gotodream.domain.entity;
 
+import android.graphics.Bitmap;
+
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
@@ -20,6 +23,9 @@ public class Dream extends RealmObject {
     private boolean complete;
 
     private Plan plan;
+
+    @Ignore
+    private Bitmap image;
 
     public String getId() {
         return id;
@@ -59,5 +65,13 @@ public class Dream extends RealmObject {
 
     public void setPlan(Plan plan) {
         this.plan = plan;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 }

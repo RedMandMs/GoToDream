@@ -2,6 +2,8 @@ package com.happyhamster.soft.gotodream.domain.interactor;
 
 import com.happyhamster.soft.gotodream.domain.entity.Plan;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 
 /**
@@ -17,10 +19,5 @@ public class PlanInteractorImpl implements PlanInteractor {
     @Override
     public Observable<Plan> update(Plan plan) {
         return null;
-    }
-
-    @Override
-    public void remove(Long id) {
-
     }
 }

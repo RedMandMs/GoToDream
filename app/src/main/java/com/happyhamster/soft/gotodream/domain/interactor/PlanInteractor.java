@@ -13,6 +13,4 @@ public interface PlanInteractor {
     Observable<Plan> persist(Plan plan);
 
     Observable<Plan> update(Plan plan);
-
-    void remove(Long id);
 }
